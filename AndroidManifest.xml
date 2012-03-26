@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+		package="com.bornski.wake">
+
+    <uses-sdk android:minSdkVersion="8" />
+
+    <application android:enabled="true"
+        	android:exported="true">
+        <!--  The broadcast receiver which ensures that our service is launched on boot. -->
+         <receiver android:name=".LaunchServiceAfterBoot">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <!-- The service that actually checks the alarms and handles the logic. -->
+        <service android:enabled="true"
+            	android:exported="true"
+            	android:name=".WakeService"
+            	android:label="@string/service_name">
+        </service>
+        <!-- The settings activity for this service. -->
+        <activity android:name=".WakeSettings"
+			android:label="@string/settings_name"
+			android:exported="true">
+		</activity>
+    </application>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+</manifest>

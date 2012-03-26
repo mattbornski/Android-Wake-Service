@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    
+    <!-- The name for the service - to be shown in system settings. -->
+    <string name="service_name">Wake Service</string>
+        
+    <!-- The name of the settings activity. -->
+    <string name="settings_name">Wake Service Settings</string>
+</resources>
