@@ -18,6 +18,7 @@
             	android:name=".WakeService"
             	android:label="@string/service_name">
         </service>
+        <receiver android:name=".WakeService$CheckUpcomingAlarm"></receiver>
         <!-- The settings activity for this service. -->
         <activity android:name=".WakeSettings"
 			android:label="@string/settings_name"
