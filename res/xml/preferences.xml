@@ -2,5 +2,36 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/settings_name">
-
+	<!-- <PreferenceCategory android:title="Wake schedule">
+		<ListPreference
+			android:title="Enable wake service"
+			android:name="Enable wake service"
+			android:summary="Which alarms should we wake for?"
+			android:key="wake"
+			android:defaultValue="AM"
+			android:entries="@array/wakeChoices"
+			android:entryValues="@array/wakeChoices" />
+	</PreferenceCategory> -->
+	<PreferenceCategory android:title="Wake mechanics">
+		<ListPreference
+			android:title="HTTP method"
+			android:name="HTTP method"
+			android:summary="Which HTTP method should be used"
+			android:key="method"
+			android:defaultValue="POST"
+			android:entries="@array/httpMethods"
+			android:entryValues="@array/httpMethods" />
+		<EditTextPreference
+		    android:title="HTTP endpoint"
+	    	android:name="HTTP endpoint"
+            android:summary="Which URL should be pinged"
+            android:defaultValue="http://192.168.10.77/N/8/on"
+            android:key="endpoint" />
+		<!-- <CheckBoxPreference
+		    android:title="Turn on WiFi"
+		    android:name="Turn on WiFi"
+		    android:defaultValue="false"
+		    android:summary="Ensure WiFi is on before attempting to wake"
+		    android:key="wifi" /> -->
+	</PreferenceCategory>
 </PreferenceScreen>

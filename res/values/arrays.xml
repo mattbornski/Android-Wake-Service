@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    
+    <string-array name="httpMethods">
+        <item>POST</item>
+        <item>GET</item>
+    </string-array>
+    
+    <string-array name="wakeChoices">
+        <item>All</item>
+        <item>AM</item>
+        <item>PM</item>
+        <item>None</item>
+    </string-array>
+</resources>

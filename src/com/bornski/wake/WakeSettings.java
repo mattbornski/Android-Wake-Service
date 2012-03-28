@@ -2,18 +2,19 @@ package com.bornski.wake;
 
 import com.bornski.wake.R;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
 public class WakeSettings extends PreferenceActivity {
-    
-    // The name of the SharedPreferences file we'll store preferences in.
-    public static final String SHARED_PREFERENCES_NAME = "WakeService";
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getPreferenceManager().setSharedPreferencesName(SHARED_PREFERENCES_NAME);
+        getPreferenceManager().setSharedPreferencesName(this.getString(R.string.shared_preferences_name));
         addPreferencesFromResource(R.xml.preferences);
+        
+        // Ensure service is running
+        Intent launchServiceIntent = new Intent(this, WakeService.class);
+        this.startService(launchServiceIntent);
     }
 }

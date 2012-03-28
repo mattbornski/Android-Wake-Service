@@ -6,4 +6,6 @@
         
     <!-- The name of the settings activity. -->
     <string name="settings_name">Wake Service Settings</string>
+    <string name="shared_preferences_name">WakeService</string>
+    <string name="wifi_lock_name">WakeService</string>
 </resources>

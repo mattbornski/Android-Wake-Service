@@ -3,29 +3,48 @@
 		package="com.bornski.wake">
 
     <uses-sdk android:minSdkVersion="8" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission><uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission><uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /><uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /><uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /><uses-permission android:name="android.permission.WAKE_LOCK"/>
+    
+    
+    
 
     <application android:enabled="true"
         	android:exported="true">
-        <!--  The broadcast receiver which ensures that our service is launched on boot. -->
-         <receiver android:name=".LaunchServiceAfterBoot">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
         <!-- The service that actually checks the alarms and handles the logic. -->
         <service android:enabled="true"
             	android:exported="true"
             	android:name=".WakeService"
             	android:label="@string/service_name">
         </service>
-        <receiver android:name=".WakeService$CheckUpcomingUserAlarm"></receiver>
+        <!--  The broadcast receiver which ensures that our service is launched on boot. -->
+        <receiver android:name=".WakeService$LaunchServiceAfterBoot">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <!--  The broadcast receiver which ensures that wifi is enabled, if requested. -->
+        <receiver android:name=".WakeService$WifiStateChanged">
+			<intent-filter>
+				<action android:name="android.intent.action.WIFI_STATE_CHANGED_ACTION" />
+				<action android:name="android.intent.action.NETWORK_STATE_CHANGED_ACTION" />
+            </intent-filter>
+        </receiver>
+        <!--  The broadcast receiver which wakes up in time to execute the pre-user-alarm wake action. -->
         <receiver android:name=".WakeService$WakeAlarm"></receiver>
+        <!--  The broadcast receiver which wakes up to check user alarms. -->
+        <receiver android:name=".WakeService$CheckUpcomingUserAlarm"></receiver>
         <!-- The settings activity for this service. -->
         <activity android:name=".WakeSettings"
 			android:label="@string/settings_name"
 			android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 		</activity>
     </application>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    
+    
 </manifest>
