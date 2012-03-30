@@ -147,6 +147,23 @@ public class WakeService extends Service {
 				e.printStackTrace();
 			}
             wifilock.release();
+            
+            // Repeat if necessary
+            int repeatCountRemaining = prefs.getInt("repeatCountRemaining", 5);
+            if (repeatCountRemaining > 0) {
+            	SharedPreferences.Editor ed = prefs.edit();
+        		ed.putInt("repeatCountRemaining", repeatCountRemaining - 1);
+        		ed.commit();
+            	Intent wakeAlarmIntent = new Intent(context, WakeAlarm.class);
+                AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+                PendingIntent sender = PendingIntent.getBroadcast(context, 234324243, wakeAlarmIntent, 0);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, sender);
+            } else {
+            	// Reset for next alarm
+            	SharedPreferences.Editor ed = prefs.edit();
+        		ed.putInt("repeatCountRemaining", 5);
+        		ed.commit();
+            }
 	    }
 	}
 	

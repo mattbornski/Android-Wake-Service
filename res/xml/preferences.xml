@@ -12,7 +12,7 @@
 			android:entries="@array/wakeChoices"
 			android:entryValues="@array/wakeChoices" />
 	</PreferenceCategory> -->
-	<PreferenceCategory android:title="Wake mechanics">
+	<PreferenceCategory android:title="Wakeup">
 		<ListPreference
 			android:title="HTTP method"
 			android:name="HTTP method"
@@ -34,4 +34,22 @@
 		    android:summary="Ensure WiFi is on before attempting to wake"
 		    android:key="wifi" /> -->
 	</PreferenceCategory>
+	<!-- <PreferenceCategory android:title="Cleanup">
+	    <ListPreference 
+	        android:title="Turn off after..."
+	        android:name="Turn off after..."
+	        android:summary="Turn off after..."
+	        android:key="offDelay"
+	        android:defaultValue="0"
+	        android:entries="@array/offDelays"
+	        android:entryValues="@array/offDelays" />
+	    <ListPreference
+	        android:title="HTTP method"
+	        android:name="HTTP method"
+	        android:summary="Which HTTP method should be used"
+	        android:key="offMethod"
+	        android:defaultValue="POST"
+	        android:entries="@array/httpMethods"
+	        android:entryValues="@array/httpMethods" />
+	</PreferenceCategory> -->
 </PreferenceScreen>
